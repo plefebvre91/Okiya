@@ -29,4 +29,3 @@ bool Constraint::isSet(int c) {
   return constraint & ~c;
 }
 
-
