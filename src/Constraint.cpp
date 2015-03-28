@@ -1,13 +1,11 @@
 #include "Constraint.hpp"
 
 Constraint::Constraint() {
-  constraints = NO_CONSTRAINT;
+  constraint = NO_CONSTRAINT;
 }
 
-Constraint::~Constraint();
-  
 void Constraint::add(int c) {
-  constraints |= c;
+  constraint |= c;
 }
 
 
@@ -17,7 +15,7 @@ void Constraint::remove(int c) {
 
 
 void Constraint::clear() {
-  constraints = NO_CONSTRAINT;
+  constraint = NO_CONSTRAINT;
 }
 
 
