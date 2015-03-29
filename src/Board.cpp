@@ -1,38 +1,32 @@
 #include "Board.hpp"
 
 Board::Board() {
+  shuffle();
+  tileOnTop = OKIYA_NO_TILE_ON_TOP;
+
   for(int i=0; i<OKIYA_NB_TILES; i++){
-    tiles[i] = new Tile();
-    deck[i] = i;
+    board[i] = i;
   }
-
-  tiles[0]->setConstraint(OKIYA_LEAF | OKIYA_SUN);
-  tiles[1]->setConstraint(OKIYA_LEAF | OKIYA_SKY);
-  tiles[2]->setConstraint(OKIYA_LEAF | OKIYA_BIRD);
-  tiles[3]->setConstraint(OKIYA_LEAF | OKIYA_REDTHING);
-
-  tiles[4]->setConstraint(OKIYA_FLOWER | OKIYA_SUN);
-  tiles[5]->setConstraint(OKIYA_FLOWER | OKIYA_SKY);
-  tiles[6]->setConstraint(OKIYA_FLOWER | OKIYA_BIRD);
-  tiles[7]->setConstraint(OKIYA_FLOWER | OKIYA_REDTHING);
-
-  tiles[8]->setConstraint(OKIYA_TREE | OKIYA_SUN);
-  tiles[9]->setConstraint(OKIYA_TREE | OKIYA_SKY);
-  tiles[10]->setConstraint(OKIYA_TREE | OKIYA_BIRD);
-  tiles[11]->setConstraint(OKIYA_TREE | OKIYA_REDTHING);
-
-  tiles[12]->setConstraint(OKIYA_CACTUS | OKIYA_SUN);
-  tiles[13]->setConstraint(OKIYA_CACTUS | OKIYA_BIRD);
-  tiles[14]->setConstraint(OKIYA_CACTUS | OKIYA_SKY);
-  tiles[15]->setConstraint(OKIYA_CACTUS | OKIYA_REDTHING);
 }
 
 Board::~Board() {
-  for(int i=0; i<OKIYA_NB_TILES; i++){
-    delete tiles[i];
-  }
+
+}
+
+void Board::play(int player, int tile, int position) {
+  tileOnTop = tile;
+  board[position] = player;
+}
+
+bool Board::checkVictory() {
+  return false;
 }
 
 void Board::shuffle() {
-  
+  int randomIndex;
+
+  for(int i=OKIYA_NB_TILES-1; i>1; i--) {
+    randomIndex = std::rand()%(i+1);
+    std::swap(board[i], board[randomIndex]);
+  }
 }

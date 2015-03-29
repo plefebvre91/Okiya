@@ -11,3 +11,6 @@
 
 //Global information
 #define OKIYA_NB_TILES 16
+#define OKIYA_NO_TILE_ON_TOP -1
+#define OKIYA_PLAYER1 17
+#define OKIYA_PLAYER2 18

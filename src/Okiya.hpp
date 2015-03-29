@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include "Board.hpp"
+#include <ctime>
+#include <cstdlib>
 
 class Okiya {
 public:
@@ -16,6 +18,8 @@ private:
   void init();
   void quit();
 
+  Tile* tiles[OKIYA_NB_TILES];
+  int tileOnTop;
   Board* board;
 };
 
