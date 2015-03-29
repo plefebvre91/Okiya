@@ -8,6 +8,8 @@
 #include <SFML/Graphics.hpp>
 #include "Definitions.hpp"
 
+
+
 class Okiya {
 public:
   Okiya();
@@ -15,15 +17,27 @@ public:
 
   void run();
   
+  friend void rendering(const Okiya* app);
   
+  sf::RenderWindow* getWindow() const;
+  sf::Sprite* getSprite(int i) const;
+
 private:
+  
   void init();
   void quit();
-
-  Tile* tiles[OKIYA_NB_TILES];
+  Tile** tiles;
   sf::RenderWindow* window;
   sf::Event event;
-  Board* board;
+  sf::Thread*  renderingThread;
+  sf::Texture* tilesTexture;
+  sf::Sprite** tilesSprites;
+  
+  
+  Board*  board;
+
+  
+
 };
 
 #endif

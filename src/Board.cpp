@@ -13,10 +13,15 @@ Board::~Board() {
 
 }
 
-void Board::play(int player, int tile, int position) {
+void Board::play(OkiyaPlayer player, int tile, int position) {
   tileOnTop = tile;
   board[position] = player;
 }
+
+int Board::get(int position) {
+  return board[position];
+}
+
 
 bool Board::checkVictory() {
   return false;

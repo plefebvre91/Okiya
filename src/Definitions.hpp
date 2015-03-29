@@ -12,13 +12,16 @@
 //Global information
 #define OKIYA_NB_TILES 16
 #define OKIYA_NO_TILE_ON_TOP -1
-#define OKIYA_PLAYER1 17
-#define OKIYA_PLAYER2 18
+// #define OKIYA_PLAYER1 17
+// #define OKIYA_PLAYER2 18
 
 //Window parameter
 #define OKIYA_FPS 25
 #define OKIYA_SCREENRATIO_X 16
 #define OKIYA_SCREENRATIO_Y 9
 #define OKIYA_RESOLUTION_X 720
+#define OKIYA_TILES_SIZE 102
 #define OKIYA_RESOLUTION_Y ((OKIYA_RESOLUTION_X*OKIYA_SCREENRATIO_Y)/OKIYA_SCREENRATIO_X)
 #define OKIYA_TITLE "Okiya v1.0"
+
+#define OKIYA_RC_PATH "../resources/img/default"

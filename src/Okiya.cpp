@@ -1,11 +1,26 @@
 #include "Okiya.hpp"
 
-Okiya::Okiya() {
+Okiya::Okiya():event() {
   std::srand(std::time(0));
   board = new Board();
 
+  tiles = new Tile*[OKIYA_NB_TILES];
+  tilesSprites = new sf::Sprite*[OKIYA_NB_TILES];
+  tilesTexture = new sf::Texture();
+  
+  if(!tilesTexture->loadFromFile("../resources/img/default/tuiles.png")){
+    printf("Erreur chargement fichier\n");
+  }
+
+  tilesTexture->setSmooth(true);
+
+  int x,y;
   for(int i=0; i<OKIYA_NB_TILES; i++){
+    x = (i/4) * OKIYA_TILES_SIZE;
+    y = (i%4) * OKIYA_TILES_SIZE;
     tiles[i] = new Tile();
+    tilesSprites[i] = new sf::Sprite(*tilesTexture, sf::IntRect(x,y,  OKIYA_TILES_SIZE, OKIYA_TILES_SIZE));
+    tilesSprites[i]->setPosition(sf::Vector2f(x,y));
   }
 
   tiles[0]->setConstraint(OKIYA_LEAF | OKIYA_SUN);
@@ -28,6 +43,7 @@ Okiya::Okiya() {
   tiles[14]->setConstraint(OKIYA_CACTUS | OKIYA_SKY);
   tiles[15]->setConstraint(OKIYA_CACTUS | OKIYA_REDTHING);
 
+
   
 
 }
@@ -39,43 +55,82 @@ Okiya::~Okiya() {
   for(int i=0; i<OKIYA_NB_TILES; i++){
     delete tiles[i];
   }
-  
+
+  delete [] tiles;
   delete window;
-  
+  delete renderingThread;
+
 }
 
+sf::RenderWindow* Okiya::getWindow() const {
+  return window;
+}
+
+sf::Sprite* Okiya::getSprite(int i) const {
+  return tilesSprites[i];
+}
+
+// void rendering(const Okiya* app) {
+//   sf::RenderWindow* window = app->getWindow();
+//   sf::Sprite* sprite = NULL;
+//   while (window->isOpen()) {
+
+//   }
+// }
 
 void Okiya::run() {
   init();
   std::cout << "Lancement Okiya" << std::endl;
 
-
-
+  //  window->setActive(false);
+  //  renderingThread->launch();
 
   while (window->isOpen()) {
-      while (window->pollEvent(event)) {
-	if (event.type == sf::Event::Closed)
-	  window->close();
+    while (window->pollEvent(event)) {
+      switch (event.type) {
+      case sf::Event::Closed:
+	window->close();
+	break;
+
+      case sf::Event::KeyPressed:
+	window->setPosition(sf::Vector2i(500,20));
+	break;
+
+      default: break;
       }
-      window->clear(sf::Color(20,20,20));
-      //...
-      window->display();
+    }
+
+    window->clear(sf::Color(20,20,20));
+    for(int i=0; i<OKIYA_NB_TILES; i++){
+      //Si c'est une tuile
+      if(board->get(i) < 17 ) {
+	window->draw(*tilesSprites[i]);
+      }
+    }
+
+    //...
+    window->display();
+
+
+  }
+}
+  
+  
+  void Okiya::init() {
+    window = new sf::RenderWindow(sf::VideoMode(OKIYA_RESOLUTION_X, OKIYA_RESOLUTION_Y), 
+				  OKIYA_TITLE,
+				  sf::Style::Default);
+  
+    window->setVerticalSyncEnabled(true);
+    window->setFramerateLimit(20);
+
+
+    //    renderingThread = new sf::Thread(rendering, this);
   }
 
-}
 
-void Okiya::init() {
-  window = new sf::RenderWindow(sf::VideoMode(OKIYA_RESOLUTION_X, OKIYA_RESOLUTION_Y), 
-				OKIYA_TITLE,
-				sf::Style::Titlebar);
-  
-  window->setVerticalSyncEnabled(true);
-  window->setFramerateLimit(20);
-}
+  void Okiya::quit() {
 
-
-void Okiya::quit() {
-
-}
+  }
 
 

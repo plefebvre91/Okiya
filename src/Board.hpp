@@ -8,15 +8,17 @@
 #include <cstdlib>
 #include <iostream>
 
+enum OkiyaPlayer {OLIYA_PLAYER1=-1, OKIYA_PLAYER2=-2};
+
 class Board {
 public:
   Board();
   ~Board();
 
-  void play(int player, int tile, int position);
+  void play(OkiyaPlayer player, int tile, int position);
   bool checkVictory();
   int getTileOnTop();
-  
+  int get(int);
   
 private:
   void shuffle();
