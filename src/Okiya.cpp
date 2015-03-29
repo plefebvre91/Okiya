@@ -28,7 +28,7 @@ Okiya::Okiya() {
   tiles[14]->setConstraint(OKIYA_CACTUS | OKIYA_SKY);
   tiles[15]->setConstraint(OKIYA_CACTUS | OKIYA_REDTHING);
 
-
+  
 
 }
 
@@ -39,15 +39,38 @@ Okiya::~Okiya() {
   for(int i=0; i<OKIYA_NB_TILES; i++){
     delete tiles[i];
   }
-
+  
+  delete window;
+  
 }
 
 
 void Okiya::run() {
+  init();
   std::cout << "Lancement Okiya" << std::endl;
+
+
+
+
+  while (window->isOpen()) {
+      while (window->pollEvent(event)) {
+	if (event.type == sf::Event::Closed)
+	  window->close();
+      }
+      window->clear(sf::Color(20,20,20));
+      //...
+      window->display();
+  }
+
 }
 
 void Okiya::init() {
+  window = new sf::RenderWindow(sf::VideoMode(OKIYA_RESOLUTION_X, OKIYA_RESOLUTION_Y), 
+				OKIYA_TITLE,
+				sf::Style::Titlebar);
+  
+  window->setVerticalSyncEnabled(true);
+  window->setFramerateLimit(20);
 }
 
 

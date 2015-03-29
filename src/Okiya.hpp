@@ -1,10 +1,12 @@
 #ifndef OKIYA_HPP
 #define OKIYA_HPP
 
-#include <iostream>
 #include "Board.hpp"
+#include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <SFML/Graphics.hpp>
+#include "Definitions.hpp"
 
 class Okiya {
 public:
@@ -19,7 +21,8 @@ private:
   void quit();
 
   Tile* tiles[OKIYA_NB_TILES];
-  int tileOnTop;
+  sf::RenderWindow* window;
+  sf::Event event;
   Board* board;
 };
 
