@@ -13,6 +13,9 @@ void Constraint::remove(int c) {
   constraint &= ~c;
 }
 
+int Constraint::get() {
+  return constraint;
+}
 
 void Constraint::clear() {
   constraint = NO_CONSTRAINT;
@@ -20,8 +23,6 @@ void Constraint::clear() {
 
 
 bool Constraint::isSet(int c) {
-  int count = 0;
-
   while(c != 1) {
     c >>= 1;
   }

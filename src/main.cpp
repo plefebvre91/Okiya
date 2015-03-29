@@ -1,8 +1,12 @@
 #include <iostream>
+#include "Okiya.hpp"
 
 int main(int argc, char** argv) {
   
-  std::cout << "Okiya" << std::endl;
+  Okiya* app = new Okiya();
+  app->run();
+
+  delete app;
 
   return 0;
 }
