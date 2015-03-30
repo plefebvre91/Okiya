@@ -8,7 +8,7 @@ Okiya::Okiya():event() {
   tilesSprites = new sf::Sprite*[OKIYA_NB_TILES];
   tilesTexture = new sf::Texture();
   
-  if(!tilesTexture->loadFromFile("../resources/img/default/tuiles.png")){
+  if(!tilesTexture->loadFromFile("../resources/img/default/tuiles2.png")){
     printf("Erreur chargement fichier\n");
   }
 
@@ -42,10 +42,6 @@ Okiya::Okiya():event() {
   tiles[13]->setConstraint(OKIYA_CACTUS | OKIYA_BIRD);
   tiles[14]->setConstraint(OKIYA_CACTUS | OKIYA_SKY);
   tiles[15]->setConstraint(OKIYA_CACTUS | OKIYA_REDTHING);
-
-
-  
-
 }
 
 
@@ -58,16 +54,8 @@ Okiya::~Okiya() {
 
   delete [] tiles;
   delete window;
-  delete renderingThread;
+  //  delete renderingThread;
 
-}
-
-sf::RenderWindow* Okiya::getWindow() const {
-  return window;
-}
-
-sf::Sprite* Okiya::getSprite(int i) const {
-  return tilesSprites[i];
 }
 
 // void rendering(const Okiya* app) {
@@ -78,12 +66,32 @@ sf::Sprite* Okiya::getSprite(int i) const {
 //   }
 // }
 
+void Okiya::render() {
+  window->clear(sf::Color(20,20,20));
+  for(int i=0; i<OKIYA_NB_TILES; i++){
+
+
+    int x = (i/4) * OKIYA_TILES_SIZE;
+    int y = (i%4) * OKIYA_TILES_SIZE;
+    tilesSprites[board->get(i)]->setPosition(sf::Vector2f(x,y));
+
+    //Si c'est une tuile
+    if(board->get(i) < 17) {
+      window->draw(*tilesSprites[board->get(i)]);
+    }
+  }
+  
+  window->display();
+}
+
 void Okiya::run() {
   init();
   std::cout << "Lancement Okiya" << std::endl;
 
   //  window->setActive(false);
   //  renderingThread->launch();
+
+
 
   while (window->isOpen()) {
     while (window->pollEvent(event)) {
@@ -99,38 +107,27 @@ void Okiya::run() {
       default: break;
       }
     }
-
-    window->clear(sf::Color(20,20,20));
-    for(int i=0; i<OKIYA_NB_TILES; i++){
-      //Si c'est une tuile
-      if(board->get(i) < 17 ) {
-	window->draw(*tilesSprites[i]);
-      }
-    }
-
-    //...
-    window->display();
-
-
+    
+    render();
   }
 }
   
   
-  void Okiya::init() {
-    window = new sf::RenderWindow(sf::VideoMode(OKIYA_RESOLUTION_X, OKIYA_RESOLUTION_Y), 
-				  OKIYA_TITLE,
-				  sf::Style::Default);
+void Okiya::init() {
+  window = new sf::RenderWindow(sf::VideoMode(OKIYA_RESOLUTION_X, OKIYA_RESOLUTION_Y), 
+				OKIYA_TITLE,
+				sf::Style::Default);
   
-    window->setVerticalSyncEnabled(true);
-    window->setFramerateLimit(20);
+  window->setVerticalSyncEnabled(true);
+  window->setFramerateLimit(20);
+  
+  
+  //    renderingThread = new sf::Thread(rendering, this);
+}
 
 
-    //    renderingThread = new sf::Thread(rendering, this);
-  }
-
-
-  void Okiya::quit() {
-
-  }
+void Okiya::quit() {
+  
+}
 
 
