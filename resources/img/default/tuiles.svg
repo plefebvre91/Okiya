@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.97380952"
-     inkscape:cx="244.47"
-     inkscape:cy="181.11609"
+     inkscape:zoom="0.48690476"
+     inkscape:cx="707.11972"
+     inkscape:cy="196.17475"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g12603"
      showgrid="false"
      showguides="true"
      inkscape:snap-global="true"
@@ -178,6 +178,9 @@
        height="424"
        width="417"
        style="fill:#00692b;fill-opacity:1;stroke:#1e1e1e;stroke-opacity:1" />
+    <g
+       id="g12603"
+       transform="translate(-438.48411,296.77262)" />
     <rect
        style="fill:#f9f9f9;stroke:#9e0303;stroke-width:9.54545307000000065;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1"
        id="rect3114-33"
@@ -306,8 +309,8 @@
        id="g7198-1-0"
        style="stroke:#cccccc;stroke-opacity:1"
        inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
-       inkscape:export-xdpi="109"
-       inkscape:export-ydpi="109">
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <path
          transform="translate(0,632.36215)"
          inkscape:connector-curvature="0"
@@ -1623,8 +1626,8 @@
        id="g7198-1"
        style="stroke:#cccccc;stroke-opacity:1"
        inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
-       inkscape:export-xdpi="109"
-       inkscape:export-ydpi="109">
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <path
          transform="translate(0,632.36215)"
          inkscape:connector-curvature="0"
@@ -2453,8 +2456,8 @@
        id="g7198-1-4"
        style="stroke:#cccccc;stroke-opacity:1"
        inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
-       inkscape:export-xdpi="109"
-       inkscape:export-ydpi="109">
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <path
          transform="translate(0,632.36215)"
          inkscape:connector-curvature="0"
@@ -3364,8 +3367,8 @@
        id="g7198-1-1"
        style="stroke:#cccccc;stroke-opacity:1"
        inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
-       inkscape:export-xdpi="109"
-       inkscape:export-ydpi="109">
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <path
          transform="translate(0,632.36215)"
          inkscape:connector-curvature="0"
@@ -6682,7 +6685,10 @@
     </g>
     <g
        transform="translate(-396.41251,83.505557)"
-       id="g9355-3">
+       id="g9355-3"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="translate(-162.24939,-312.17604)"
          id="g9270-0">
@@ -6908,7 +6914,10 @@
     </g>
     <g
        transform="matrix(-1,0,0,1,562.13341,-261.97059)"
-       id="g11370-7-8">
+       id="g11370-7-8"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          id="g9897-5-64-1"
          transform="matrix(0.39883718,-0.27297056,0.27297056,0.39883718,11.082126,799.05414)">
@@ -7742,7 +7751,10 @@
     </g>
     <g
        transform="translate(-291.43221,188.52595)"
-       id="g9355-5">
+       id="g9355-5"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="translate(-162.24939,-312.17604)"
          id="g9270-7">
@@ -7968,7 +7980,10 @@
     </g>
     <g
        transform="matrix(-1,0,0,1,501.38191,293.59397)"
-       id="g9355-38">
+       id="g9355-38"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="translate(-162.24939,-312.17604)"
          id="g9270-9">
@@ -8194,7 +8209,10 @@
     </g>
     <g
        transform="matrix(-1,0,0,1,663.08167,83.142495)"
-       id="g9355-38-7">
+       id="g9355-38-7"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="translate(-162.24939,-312.17604)"
          id="g9270-9-8">
@@ -9457,7 +9475,10 @@
     </g>
     <g
        transform="matrix(0.39883718,-0.27297056,0.27297056,0.39883718,-442.63334,747.2742)"
-       id="g9897-5-6">
+       id="g9897-5-6"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="matrix(0.89098215,0.45403834,-0.45403834,0.89098215,541.22991,-124.8928)"
          id="g9853-8-6">
@@ -9726,7 +9747,10 @@
     </g>
     <g
        transform="matrix(0.67873995,0.61297144,-0.4308269,0.42581762,184.84609,243.5204)"
-       id="g9897-2-2">
+       id="g9897-2-2"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="matrix(0.89098215,0.45403834,-0.45403834,0.89098215,541.22991,-124.8928)"
          id="g9853-84-3">
@@ -9995,7 +10019,10 @@
     </g>
     <g
        id="g9897-4"
-       transform="matrix(0.70474589,0,0,0.84417144,-300.95408,118.61779)">
+       transform="matrix(0.70474589,0,0,0.84417144,-300.95408,118.61779)"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="matrix(0.89098215,0.45403834,-0.45403834,0.89098215,541.22991,-124.8928)"
          id="g9853-6">
@@ -10274,7 +10301,10 @@
        inkscape:export-ydpi="109.71429" />
     <g
        transform="matrix(-0.39883718,-0.27297056,-0.27297056,0.39883718,647.65149,642.6099)"
-       id="g9897-5-5">
+       id="g9897-5-5"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="matrix(0.89098215,0.45403834,-0.45403834,0.89098215,541.22991,-124.8928)"
          id="g9853-8-5">
@@ -10543,7 +10573,10 @@
     </g>
     <g
        transform="matrix(-0.67873995,0.61297144,0.4308269,0.42581762,20.172037,138.8561)"
-       id="g9897-2-4">
+       id="g9897-2-4"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="matrix(0.89098215,0.45403834,-0.45403834,0.89098215,541.22991,-124.8928)"
          id="g9853-84-0">
@@ -10812,7 +10845,10 @@
     </g>
     <g
        id="g9897-43"
-       transform="matrix(-0.70474589,0,0,0.84417144,505.9722,13.953486)">
+       transform="matrix(-0.70474589,0,0,0.84417144,505.9722,13.953486)"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          transform="matrix(0.89098215,0.45403834,-0.45403834,0.89098215,541.22991,-124.8928)"
          id="g9853-9">
@@ -11902,7 +11938,10 @@
     </g>
     <g
        transform="matrix(-1,0,0,1,668.26329,-261.60967)"
-       id="g11370-7-3">
+       id="g11370-7-3"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429">
       <g
          id="g9897-5-64-6"
          transform="matrix(0.39883718,-0.27297056,0.27297056,0.39883718,11.082126,799.05414)">

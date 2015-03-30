@@ -8,7 +8,7 @@ Okiya::Okiya():event() {
   tilesSprites = new sf::Sprite*[OKIYA_NB_TILES];
   tilesTexture = new sf::Texture();
   
-  if(!tilesTexture->loadFromFile("../resources/img/default/tuiles2.png")){
+  if(!tilesTexture->loadFromFile("../resources/img/numbers/tuiles.png")){
     printf("Erreur chargement fichier\n");
   }
 
