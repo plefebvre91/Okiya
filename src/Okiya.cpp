@@ -77,8 +77,12 @@ Okiya::~Okiya() {
   
   for(int i=0; i<OKIYA_NB_TILES; i++){
     delete tiles[i];
+    delete tilesPosition[i];
+    delete tilesSprites[i];
   }
-
+  
+  delete tilesTexture;
+  delete [] tilesPosition;
   delete [] tiles;
   delete window;
   //  delete renderingThread;
@@ -103,9 +107,10 @@ void Okiya::render() {
     gameArea = sf::Rect<int>(globalPadding.x, globalPadding.y, 4*OKIYA_TILES_SIZE + 3*padding, 4*OKIYA_TILES_SIZE + 3*padding);
     
     //     sf::RectangleShape* r = new sf::RectangleShape(sf::Vector2f(4*OKIYA_TILES_SIZE + 3*padding, 4*OKIYA_TILES_SIZE + 3*padding));
-    r->setOutlineThickness(3);
-    r->setFillColor(sf::Color::Transparent);
-    r->setOutlineColor(sf::Color(200, 200, 200));
+    r->setOutlineThickness(1);
+    r->setFillColor(sf::Color(250,230,100,5));
+    
+    r->setOutlineColor(sf::Color(250, 230, 100));
     r->setPosition(focusArea.left,focusArea.top);
     r->setSize(sf::Vector2f(OKIYA_TILES_SIZE, OKIYA_TILES_SIZE));
     
