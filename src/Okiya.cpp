@@ -1,13 +1,14 @@
 #include "Okiya.hpp"
 
-Okiya::Okiya():event() {
+Okiya::Okiya():event(),gameArea(),focusArea() {
   std::srand(std::time(0));
   board = new Board();
 
   tiles = new Tile*[OKIYA_NB_TILES];
   tilesSprites = new sf::Sprite*[OKIYA_NB_TILES];
+  tilesPosition = new sf::Vector2f*[OKIYA_NB_TILES];
   tilesTexture = new sf::Texture();
-  
+
   if(!tilesTexture->loadFromFile("../resources/img/default/tuiles2.png")){
     printf("Erreur chargement fichier\n");
   }
@@ -15,13 +16,39 @@ Okiya::Okiya():event() {
   tilesTexture->setSmooth(true);
 
   int x,y;
+  int padding = 10;
+  sf::Vector2f globalPadding(20,20);
+
   for(int i=0; i<OKIYA_NB_TILES; i++){
-    x = (i/4) * OKIYA_TILES_SIZE;
-    y = (i%4) * OKIYA_TILES_SIZE;
+
+    x = i/4;
+    y = i%4;
+
+    sf::Vector2f offset(x*padding, y*padding);
+
+    sf::Vector2f position(x*OKIYA_TILES_SIZE,y*OKIYA_TILES_SIZE);
+
     tiles[i] = new Tile();
-    tilesSprites[i] = new sf::Sprite(*tilesTexture, sf::IntRect(x,y,  OKIYA_TILES_SIZE, OKIYA_TILES_SIZE));
-    tilesSprites[i]->setPosition(sf::Vector2f(x,y));
+    tilesPosition[i] = new sf::Vector2f(0,0);
+    tilesSprites[i] = new sf::Sprite(*tilesTexture, sf::IntRect(position.x,position.y,  OKIYA_TILES_SIZE, OKIYA_TILES_SIZE));
+  
   }
+
+  for(int i=0; i<OKIYA_NB_TILES; i++){
+    x = i/4;
+    y = i%4;
+
+    sf::Vector2f offset(x*padding, y*padding);
+    sf::Vector2f position(x*OKIYA_TILES_SIZE,y*OKIYA_TILES_SIZE);
+
+    sf::Vector2f p(position+offset+globalPadding);
+    tilesPosition[board->get(i)]->x = p.x;
+    tilesPosition[board->get(i)]->y = p.y;
+    tilesSprites[board->get(i)]->setPosition(p);
+  }
+
+
+
 
   tiles[0]->setConstraint(OKIYA_LEAF | OKIYA_SUN);
   tiles[1]->setConstraint(OKIYA_LEAF | OKIYA_SKY);
@@ -68,21 +95,58 @@ Okiya::~Okiya() {
 
 void Okiya::render() {
   window->clear(sf::Color(20,20,20));
+  sf::Vector2f globalPadding(20,20);
+  int padding = 10;
+
+  sf::RectangleShape* r = new sf::RectangleShape();
   for(int i=0; i<OKIYA_NB_TILES; i++){
-
-
-    int x = (i/4) * OKIYA_TILES_SIZE;
-    int y = (i%4) * OKIYA_TILES_SIZE;
-    tilesSprites[board->get(i)]->setPosition(sf::Vector2f(x,y));
-
+    gameArea = sf::Rect<int>(globalPadding.x, globalPadding.y, 4*OKIYA_TILES_SIZE + 3*padding, 4*OKIYA_TILES_SIZE + 3*padding);
+    
+    //     sf::RectangleShape* r = new sf::RectangleShape(sf::Vector2f(4*OKIYA_TILES_SIZE + 3*padding, 4*OKIYA_TILES_SIZE + 3*padding));
+    r->setOutlineThickness(3);
+    r->setFillColor(sf::Color::Transparent);
+    r->setOutlineColor(sf::Color(200, 200, 200));
+    r->setPosition(focusArea.left,focusArea.top);
+    r->setSize(sf::Vector2f(OKIYA_TILES_SIZE, OKIYA_TILES_SIZE));
+    
     //Si c'est une tuile
     if(board->get(i) < 17) {
       window->draw(*tilesSprites[board->get(i)]);
     }
+    window->draw(*r);
+
   }
-  
+  delete r;
   window->display();
 }
+
+int Okiya::getTileFromMouse(int x, int y) {
+  int a,b;
+  int padding = 10;
+  sf::Vector2f globalPadding(20,20);
+
+  for(int i=0; i<OKIYA_NB_TILES; i++){
+   a = i/4;
+   b = i%4;
+
+    sf::Vector2f offset(a*padding, b*padding);
+    sf::Vector2f position(a*OKIYA_TILES_SIZE,b*OKIYA_TILES_SIZE);
+   
+    sf::Rect<int> r(position.x+20+offset.x, position.y+20+offset.y, OKIYA_TILES_SIZE, OKIYA_TILES_SIZE);
+    if(r.contains(x,y)){
+      focusArea = r;
+
+        return      board->get(i) ;
+    }
+    
+
+
+
+}
+  return 0;
+}
+
+
 
 void Okiya::run() {
   init();
@@ -99,9 +163,14 @@ void Okiya::run() {
       case sf::Event::Closed:
 	window->close();
 	break;
+	
+      case sf::Event::MouseMoved:
+	getTileFromMouse(event.mouseMove.x, event.mouseMove.y);
+	
+	break;
 
       case sf::Event::KeyPressed:
-	window->setPosition(sf::Vector2i(500,20));
+	
 	break;
 
       default: break;
@@ -120,8 +189,6 @@ void Okiya::init() {
   
   window->setVerticalSyncEnabled(true);
   window->setFramerateLimit(20);
-  
-  
   //    renderingThread = new sf::Thread(rendering, this);
 }
 

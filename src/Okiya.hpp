@@ -30,6 +30,8 @@ private:
   //Stops game and frees memory
   void quit();
 
+  int getTileFromMouse(int x, int y) ;
+
   Tile** tiles;
   Board*  board;
 
@@ -37,6 +39,11 @@ private:
   sf::Event event;
   //  sf::Thread*  renderingThread;
   sf::Texture* tilesTexture;
+  sf::Vector2f**    tilesPosition;
   sf::Sprite** tilesSprites;
+  sf::Rect<int> gameArea;
+sf::Rect<int> focusArea;
+  
+  
 };
 #endif
