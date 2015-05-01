@@ -11,16 +11,19 @@ public:
   ~Tile();
 
   //Returns an integer representing the card constraint
-  int getConstraint();
+  int getConstraint() const;
 
   //Return true if card is still on board game
-  bool isOnBoard();
+  bool isOnBoard() const;
 
   //Swaps tile and player pawn
   void removeFromBoard();
 
   //Attaches a constraint
   void setConstraint(int);
+  
+  //Returns true if constraints are compatible
+  bool isCompatibleWith(const Tile& tile) const;
 
 private:
   Constraint* constraint;

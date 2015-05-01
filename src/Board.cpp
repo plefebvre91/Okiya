@@ -39,10 +39,23 @@ int Board::get(int position) {
   return board[position];
 }
 
+void Board::setDeck(Tile* tiles){
+  deck = tiles;
+}
+
 bool Board::isPossibleToPlayHere(int tile, int position){
-  (void)tile;
-  (void)position;
-  return true;
+  // Premier coup
+  if(tileOnTop == OKIYA_NO_TILE_ON_TOP){
+    return true;
+  }
+
+  //tuile posée
+  Tile& tileOnBoard = deck[tile];
+  Tile& lastPlayedTile = deck[tileOnTop];
+
+  return tileOnBoard.isCompatibleWith(lastPlayedTile) &&
+    get(position) != OKIYA_PLAYER1 &&
+    get(position) != OKIYA_PLAYER2;
 }
 
 

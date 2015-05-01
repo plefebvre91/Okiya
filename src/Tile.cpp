@@ -12,12 +12,12 @@ Tile::~Tile() {
 }
 
 
-int  Tile::getConstraint() {
+int  Tile::getConstraint() const {
   return constraint->get();
 }
 
 
-bool Tile::isOnBoard() {
+bool Tile::isOnBoard() const {
   return onBoard;
 }
 
@@ -31,4 +31,9 @@ void Tile::setConstraint(int c) {
   constraint->add(c);
 }
 
-
+bool Tile::isCompatibleWith(const Tile& tile) const {
+  int c1 = getConstraint();
+  int c2 = tile.getConstraint();
+  
+  return (c1 & c2);
+}

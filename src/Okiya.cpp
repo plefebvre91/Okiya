@@ -8,7 +8,7 @@ Okiya::Okiya():event(),gameArea(),focusArea() {
   tilesSprites = new sf::Sprite*[OKIYA_NB_TILES];
   tilesPosition = new sf::Vector2f*[OKIYA_NB_TILES];
   tilesTexture = new sf::Texture();
-
+  
   if(!tilesTexture->loadFromFile("../resources/img/default/tuiles2.png")){
     printf("Erreur chargement fichier\n");
   }
@@ -25,7 +25,7 @@ Okiya::Okiya():event(),gameArea(),focusArea() {
     y = i%4;
 
     sf::Vector2f offset(x*padding, y*padding);
-
+    
     sf::Vector2f position(x*OKIYA_TILES_SIZE,y*OKIYA_TILES_SIZE);
 
     tiles[i] = new Tile();
@@ -69,6 +69,12 @@ Okiya::Okiya():event(),gameArea(),focusArea() {
   tiles[13]->setConstraint(OKIYA_CACTUS | OKIYA_BIRD);
   tiles[14]->setConstraint(OKIYA_CACTUS | OKIYA_SKY);
   tiles[15]->setConstraint(OKIYA_CACTUS | OKIYA_REDTHING);
+  
+  board->setDeck(*tiles);
+  
+  player = OKIYA_PLAYER1;
+  isRunning = true;
+
 }
 
 
@@ -98,7 +104,7 @@ Okiya::~Okiya() {
 // }
 
 void Okiya::render() {
-  window->clear(sf::Color(20,20,20));
+  window->clear(sf::Color(100,100,200));
   sf::Vector2f globalPadding(20,20);
   int padding = 10;
 
@@ -126,29 +132,28 @@ void Okiya::render() {
 }
 
 int Okiya::getTileFromMouse(int x, int y) {
-  int a,b;
+  int row,column;
   int padding = 10;
   sf::Vector2f globalPadding(20,20);
-
+  sf::Vector2f offset;
+  sf::Vector2f position;
+  sf::Rect<int> tile;
+  //  tile = sf::Rect<int>;//position.x+20+offset.x, position.y+20+offset.y, OKIYA_TILES_SIZE, OKIYA_TILES_SIZE);
   for(int i=0; i<OKIYA_NB_TILES; i++){
-   a = i/4;
-   b = i%4;
+    row = i%4;
+    column = i/4;
 
-    sf::Vector2f offset(a*padding, b*padding);
-    sf::Vector2f position(a*OKIYA_TILES_SIZE,b*OKIYA_TILES_SIZE);
-   
-    sf::Rect<int> r(position.x+20+offset.x, position.y+20+offset.y, OKIYA_TILES_SIZE, OKIYA_TILES_SIZE);
-    if(r.contains(x,y)){
-      focusArea = r;
+    offset = sf::Vector2f(row*padding, column*padding);
+    position = sf::Vector2f(row*OKIYA_TILES_SIZE,column*OKIYA_TILES_SIZE);
 
-        return      board->get(i) ;
-    }
+    tile = sf::Rect<int>(position.x+20+offset.x, position.y+20+offset.y, OKIYA_TILES_SIZE, OKIYA_TILES_SIZE);
     
-
-
-
-}
-  return 0;
+    if(tile.contains(x,y)){
+      focusArea = tile;
+      return i;
+    }
+  }
+  return -1;
 }
 
 
@@ -160,30 +165,51 @@ void Okiya::run() {
   //  window->setActive(false);
   //  renderingThread->launch();
 
-
-
-  while (window->isOpen()) {
+  while (isRunning) {
     while (window->pollEvent(event)) {
+      sf::Vector2i mouse;
+      int tileIndex;
       switch (event.type) {
       case sf::Event::Closed:
 	window->close();
 	break;
 	
       case sf::Event::MouseMoved:
-	getTileFromMouse(event.mouseMove.x, event.mouseMove.y);
+	mouse = sf::Mouse::getPosition(*window);
+	tileIndex = getTileFromMouse(mouse.x,mouse.y);
+	break;
 	
+      case sf::Event::MouseButtonPressed:
+	std::cout << "Clic" << std::endl;
+        mouse = sf::Mouse::getPosition(*window);
+
+	std::cout << mouse.x << " " <<  mouse.y << std::endl;
+	tileIndex = getTileFromMouse(mouse.x, mouse.y);
+	std::cout << board->get(tileIndex) << std::endl;
+	
+	if(board->isPossibleToPlayHere(board->get(tileIndex), tileIndex)){
+	  board->play(player, board->get(tileIndex), tileIndex);
+	  //board->checkVictory();
+	}  
 	break;
 
+	
       case sf::Event::KeyPressed:
-	
+	if (event.key.code == sf::Keyboard::Escape) {
+	  isRunning = false;
+	}
 	break;
-
+	
       default: break;
+	}
       }
+      
+      render();
+      
+      player = (player == OKIYA_PLAYER1)?
+	OKIYA_PLAYER2:OKIYA_PLAYER1;
     }
-    
-    render();
-  }
+  quit();
 }
   
   
@@ -194,12 +220,12 @@ void Okiya::init() {
   
   window->setVerticalSyncEnabled(true);
   window->setFramerateLimit(20);
-  //    renderingThread = new sf::Thread(rendering, this);
+  //renderingThread = new sf::Thread(rendering, this);
 }
 
 
 void Okiya::quit() {
-  
+  window->close();
 }
 
 

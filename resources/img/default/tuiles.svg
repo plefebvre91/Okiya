@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2947601"
-     inkscape:cx="230.01351"
-     inkscape:cy="211.34506"
+     inkscape:zoom="1.4237303"
+     inkscape:cx="364.30691"
+     inkscape:cy="304.73856"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -178,6 +178,16 @@
        height="95.454529"
        x="109.77272"
        y="742.13489"
+       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
+       inkscape:export-xdpi="109.71429"
+       inkscape:export-ydpi="109.71429" />
+    <rect
+       style="fill:#ffffff;stroke:#9e0303;stroke-width:9.54545307000000065;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3114-9-8-8"
+       width="95.454529"
+       height="95.454529"
+       x="109.77273"
+       y="637.13489"
        inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
        inkscape:export-xdpi="109.71429"
        inkscape:export-ydpi="109.71429" />
@@ -14359,7 +14369,7 @@
        sodipodi:cy="609.14856"
        sodipodi:rx="1.0069264"
        sodipodi:ry="0.87039399"
-       d="m 1051.7773,609.14856 a 1.0069264,0.87039399 0 1 1 -2.0138,0 1.0069264,0.87039399 0 1 1 2.0138,0 z"
+       d="m 1051.7773,609.14856 c 0,0.4807 -0.4508,0.87039 -1.0069,0.87039 -0.5561,0 -1.0069,-0.38969 -1.0069,-0.87039 0,-0.48071 0.4508,-0.87039 1.0069,-0.87039 0.5561,0 1.0069,0.38968 1.0069,0.87039 z"
        transform="matrix(0.31138263,-0.28737952,0.21277353,0.23054525,-88.5433,1046.2128)"
        inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
        inkscape:export-xdpi="109.71429"
@@ -19817,16 +19827,6 @@
            sodipodi:nodetypes="ccc" />
       </g>
     </g>
-    <rect
-       style="fill:none;stroke:#9e0303;stroke-width:9.54545307;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect3114-9-8-8"
-       width="95.454529"
-       height="95.454529"
-       x="109.77273"
-       y="637.13489"
-       inkscape:export-filename="/home/pierre/Okiya/resources/img/default/tuiles2.png"
-       inkscape:export-xdpi="109.71429"
-       inkscape:export-ydpi="109.71429" />
     <g
        transform="translate(-311.70539,-306.54338)"
        id="g4094-4"

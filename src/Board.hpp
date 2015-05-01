@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 
-enum OkiyaPlayer {OLIYA_PLAYER1=-1, OKIYA_PLAYER2=-2};
+enum OkiyaPlayer {OKIYA_PLAYER1=-1, OKIYA_PLAYER2=-2};
 
 class Board {
 public:
@@ -30,11 +30,14 @@ public:
 
   //Return the tile index in deck (useful after shuffling) 
   int get(int);
+
+  void setDeck(Tile*);
   
 private:
   void shuffle();
   int board[OKIYA_NB_TILES];
   int tileOnTop;
+  Tile* deck;
 };
 
 #endif

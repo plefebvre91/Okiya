@@ -35,6 +35,7 @@ private:
   Tile** tiles;
   Board*  board;
 
+  bool isRunning;
   sf::RenderWindow* window;
   sf::Event event;
   //  sf::Thread*  renderingThread;
@@ -42,8 +43,8 @@ private:
   sf::Vector2f**    tilesPosition;
   sf::Sprite** tilesSprites;
   sf::Rect<int> gameArea;
-sf::Rect<int> focusArea;
-  
+  sf::Rect<int> focusArea;
+  OkiyaPlayer player;
   
 };
 #endif
